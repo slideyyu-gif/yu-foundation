@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>上莒溪余氏教育发展基金会</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231e3a5f'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23c9a961' font-family='serif' font-weight='bold'%3E余%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --ink:#1e3a5f;
+  --ink-deep:#142a47;
+  --gold:#c9a961;
+  --gold-soft:#e6d4a8;
+  --paper:#faf8f4;
+  --paper-warm:#f3efe6;
+  --text:#262626;
+  --text-mute:#6b6b6b;
+  --line:#e5e0d5;
+  --green:#2d6a4f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  color:var(--text);background:var(--paper);line-height:1.7;font-size:16px;
+}
+h1,h2,h3,.serif{font-family:'Noto Serif SC','Songti SC',serif}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ===== 顶部导航 ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,248,244,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;height:68px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-seal{
+  width:40px;height:40px;border-radius:8px;background:var(--ink);
+  color:var(--gold);display:flex;align-items:center;justify-content:center;
+  font-family:'Noto Serif SC',serif;font-weight:900;font-size:22px;
+}
+.brand-name{font-family:'Noto Serif SC',serif;font-weight:700;font-size:17px;color:var(--ink);line-height:1.2}
+.brand-sub{font-size:11px;color:var(--text-mute);letter-spacing:1px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-link{
+  padding:8px 14px;font-size:14px;color:var(--text);border-radius:6px;
+  transition:background .2s,color .2s;cursor:pointer;
+}
+.nav-link:hover{background:var(--paper-warm);color:var(--ink)}
+.nav-link.active{color:var(--ink);font-weight:500;background:var(--paper-warm)}
+.nav-cta{
+  background:var(--ink);color:#fff;padding:9px 18px;border-radius:6px;
+  font-size:14px;transition:background .2s;cursor:pointer;
+}
+.nav-cta:hover{background:var(--ink-deep)}
+.nav-toggle{display:none;font-size:24px;color:var(--ink);padding:6px}
+
+/* ===== 视图切换 ===== */
+.view{display:none;min-height:100vh;padding-top:68px}
+.view.active{display:block}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;min-height:calc(100vh - 68px);
+  display:flex;align-items:center;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(115deg,rgba(20,42,71,.88) 0%,rgba(20,42,71,.72) 45%,rgba(20,42,71,.35) 100%);
+}
+.hero-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 24px;width:100%}
+.hero-tag{
+  display:inline-block;color:var(--gold-soft);font-size:14px;letter-spacing:4px;
+  border:1px solid rgba(201,169,97,.5);padding:6px 16px;border-radius:2px;margin-bottom:28px;
+}
+.hero h1{
+  color:#fff;font-size:clamp(32px,5.5vw,60px);font-weight:900;line-height:1.25;
+  margin-bottom:24px;letter-spacing:2px;
+}
+.hero h1 .gold{color:var(--gold)}
+.hero-sub{color:rgba(255,255,255,.85);font-size:clamp(15px,1.6vw,18px);max-width:560px;margin-bottom:40px;line-height:1.9}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--gold);color:var(--ink-deep);padding:14px 32px;border-radius:4px;
+  font-size:15px;font-weight:500;transition:transform .2s,box-shadow .2s;cursor:pointer;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,97,.35)}
+.btn-ghost{
+  background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);
+  padding:14px 32px;border-radius:4px;font-size:15px;cursor:pointer;transition:border-color .2s,background .2s;
+}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* ===== 数据条 ===== */
+.stats{background:var(--ink);color:#fff;position:relative}
+.stats-inner{
+  max-width:1200px;margin:0 auto;padding:48px 24px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+.stat{text-align:center;padding:12px 8px}
+.stat-num{font-family:'Noto Serif SC',serif;font-size:clamp(30px,3.5vw,44px);font-weight:900;color:var(--gold);line-height:1.1}
+.stat-label{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px;letter-spacing:1px}
+
+/* ===== 通用区块 ===== */
+.section{padding:80px 24px;max-width:1200px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:56px}
+.section-kicker{color:var(--gold);font-size:13px;letter-spacing:4px;margin-bottom:12px}
+.section-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;color:var(--ink);margin-bottom:16px}
+.section-desc{color:var(--text-mute);max-width:640px;margin:0 auto;font-size:15px}
+
+/* 首页关于预览 */
+.about-preview{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-preview img{border-radius:8px;box-shadow:0 20px 60px rgba(30,58,95,.15)}
+.about-text h3{font-size:24px;color:var(--ink);margin-bottom:18px;line-height:1.5}
+.about-text p{color:var(--text-mute);margin-bottom:16px;font-size:15px;line-height:1.9}
+.link-more{color:var(--ink);font-weight:500;border-bottom:1px solid var(--gold);padding-bottom:2px;cursor:pointer;display:inline-block;margin-top:8px}
+.link-more:hover{color:var(--gold)}
+
+/* 项目卡片 */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj-card{
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:36px 28px;
+  transition:transform .2s,box-shadow .2s;
+}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,58,95,.1)}
+.proj-icon{
+  width:52px;height:52px;border-radius:10px;background:var(--paper-warm);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--ink);
+}
+.proj-card h4{font-size:19px;color:var(--ink);margin-bottom:12px;font-family:'Noto Serif SC',serif}
+.proj-card p{font-size:14px;color:var(--text-mute);line-height:1.8}
+
+/* 新闻时间线 */
+.news-list{max-width:820px;margin:0 auto}
+.news-item{
+  display:grid;grid-template-columns:140px 1px 1fr;gap:24px;
+  padding-bottom:40px;position:relative;
+}
+.news-year{
+  font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--ink);
+  text-align:right;padding-top:2px;
+}
+.news-year small{display:block;font-size:12px;color:var(--gold);font-weight:400;margin-top:2px;letter-spacing:1px}
+.news-line{background:var(--line);position:relative}
+.news-dot{
+  position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--paper);
+}
+.news-body h4{font-size:17px;color:var(--ink);margin-bottom:8px;font-family:'Noto Serif SC',serif}
+.news-body p{font-size:14px;color:var(--text-mute);line-height:1.8}
+.news-tag{
+  display:inline-block;font-size:12px;color:var(--green);background:rgba(45,106,79,.08);
+  padding:2px 10px;border-radius:3px;margin-top:10px;
+}
+
+/* CTA条 */
+.cta-band{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-deep) 100%);
+  color:#fff;text-align:center;padding:72px 24px;
+}
+.cta-band h3{font-size:clamp(24px,3vw,34px);margin-bottom:16px;font-weight:900}
+.cta-band p{color:rgba(255,255,255,.75);max-width:520px;margin:0 auto 32px;line-height:1.8}
+
+/* ===== 子页通用 ===== */
+.page-hero{
+  background:var(--ink);color:#fff;padding:72px 24px;text-align:center;
+}
+.page-hero h1{font-size:clamp(28px,3.5vw,42px);font-weight:900;margin-bottom:12px}
+.page-hero p{color:rgba(255,255,255,.7);max-width:560px;margin:0 auto}
+.page-body{max-width:960px;margin:0 auto;padding:64px 24px}
+.page-body h2{
+  font-size:22px;color:var(--ink);margin:40px 0 16px;
+  padding-left:14px;border-left:4px solid var(--gold);
+}
+.page-body p{margin-bottom:16px;color:var(--text);line-height:2;font-size:15.5px}
+.page-body .lead{font-size:17px;color:var(--ink)}
+
+/* 理事会表格 */
+.board-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}
+.board-table th,.board-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+.board-table th{background:var(--paper-warm);color:var(--ink);font-weight:500;width:140px}
+.board-table td{color:var(--text-mute)}
+
+/* 捐赠方式 */
+.donate-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.donate-card{
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:32px;
+}
+.donate-card h4{color:var(--ink);font-size:18px;margin-bottom:14px;font-family:'Noto Serif SC',serif}
+.donate-card .info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.donate-card .info-row:last-child{border-bottom:none}
+.donate-card .info-row span:first-child{color:var(--text-mute)}
+.donate-card .info-row span:last-child{color:var(--ink);font-weight:500;text-align:right}
+
+/* 占位提示 */
+.todo-note{
+  background:#fff8e6;border:1px dashed var(--gold);border-radius:6px;
+  padding:14px 18px;font-size:13px;color:#8a6d2f;margin:16px 0;line-height:1.7;
+}
+
+/* 联系我们 */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:24px}
+.contact-item{display:flex;gap:16px;align-items:flex-start;padding:20px;background:#fff;border-radius:8px;border:1px solid var(--line)}
+.contact-item .icon{flex-shrink:0;width:44px;height:44px;border-radius:8px;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.contact-item h5{font-size:15px;color:var(--ink);margin-bottom:4px}
+.contact-item p{font-size:14px;color:var(--text-mute);line-height:1.6}
+
+/* Footer */
+footer{background:var(--ink-deep);color:rgba(255,255,255,.6);padding:48px 24px 24px;margin-top:0}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer-brand .brand-seal{margin-bottom:16px}
+.footer-brand p{font-size:13px;line-height:1.8;max-width:320px}
+.footer h5{color:#fff;font-size:14px;margin-bottom:16px;font-weight:500}
+.footer ul{list-style:none}
+.footer li{margin-bottom:10px;font-size:13px;cursor:pointer;transition:color .2s}
+.footer li:hover{color:var(--gold)}
+.footer-bottom{
+  max-width:1200px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);
+  font-size:12px;text-align:center;
+}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);
+  background:var(--ink);color:#fff;padding:12px 24px;border-radius:6px;font-size:14px;
+  z-index:999;opacity:0;transition:all .3s;pointer-events:none;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* ===== 响应式 ===== */
+@media (max-width:820px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);
+    flex-direction:column;padding:16px;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:block}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:32px 16px}
+  .about-preview{grid-template-columns:1fr;gap:32px}
+  .proj-grid{grid-template-columns:1fr;gap:16px}
+  .donate-grid,.contact-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;gap:28px}
+  .news-item{grid-template-columns:90px 1px 1fr;gap:16px}
+  .news-year{font-size:17px}
+  .section{padding:56px 20px}
+  .hero-content{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="brand-seal">余</div>
+      <div>
+        <div class="brand-name">上莒溪余氏教育发展基金会</div>
+        <div class="brand-sub">SHANG JU XI YU FAMILY EDUCATION FOUNDATION</div>
+      </div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link active" data-view="home">首页</a>
+      <a class="nav-link" data-view="about">关于我们</a>
+      <a class="nav-link" data-view="programs">奖助学项目</a>
+      <a class="nav-link" data-view="news">新闻动态</a>
+      <a class="nav-link" data-view="donate">捐赠参与</a>
+      <a class="nav-link" data-view="contact">联系我们</a>
+      <button class="nav-cta" onclick="go('donate');toast('感谢您的善心支持')">我要捐赠</button>
+    </div>
+    <button class="nav-toggle" aria-label="菜单" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== 视图：首页 ========== -->
+<div class="view active" id="view-home">
+  <section class="hero">
+    <div class="hero-bg"><img src="assets/hero.jpg" alt="新安堂"></div>
+    <div class="hero-content">
+      <span class="hero-tag">崇文重教 · 反哺桑梓</span>
+      <h1>耕读传家久<br><span class="gold">诗书继世长</span></h1>
+      <p class="hero-sub">上莒溪余氏教育发展基金会，肇始于新安堂下，凝聚宗亲乡贤之力，奖掖后学、激励菁英，让每一位余氏子弟都能读书成才。</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="go('programs')">了解奖助学项目</button>
+        <button class="btn-ghost" onclick="go('about')">认识基金会</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">连续颁奖届次（2019—2026）</div></div>
+      <div class="stat"><div class="stat-num">2019</div><div class="stat-label">基金会肇始之年</div></div>
+      <div class="stat"><div class="stat-num">新安堂</div><div class="stat-label">颁奖盛典所在堂号</div></div>
+      <div class="stat"><div class="stat-num">余小伙</div><div class="stat-label">现任理事会会长</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="section-kicker">ABOUT US</div>
+      <h2 class="section-title">一份来自宗族的教育初心</h2>
+      <p class="section-desc">上莒溪余氏，世居福建连城莒溪，耕读传家。基金会以新安堂为根基，奖教助学、固本培元。</p>
+    </div>
+    <div class="about-preview">
+      <img src="assets/hero.jpg" alt="新安堂风貌" style="aspect-ratio:4/3;object-fit:cover">
+      <div class="about-text">
+        <h3>自2019年起，我们已连续举办八届奖学颁奖大会</h3>
+        <p>每年八月秋桂飘香之际，余氏宗亲齐聚新安堂耀采厅，为本年度金榜题名的余氏子弟颁发奖学金，勉励他们勤学上进、光前裕后。</p>
+        <p>从博士研究生到重点中学新生，基金会覆盖不同学业阶段的优秀学子，也礼敬潜心从教的家乡教师。</p>
+        <a class="link-more" onclick="go('about')">了解更多 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="section-head">
+      <div class="section-kicker">PROGRAMS</div>
+      <h2 class="section-title">我们做什么</h2>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
+        <h4>优秀学子奖学金</h4>
+        <p>奖励当年考入博士研究生、硕士研究生、重点大学及重点中学的余氏优秀子弟，金榜题名之日，宗族同庆。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h4>优秀教师奖教金</h4>
+        <p>礼敬扎根莒溪家乡教育的辛勤园丁，感谢他们为余氏子弟传道授业、润物无声。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h4>宗族文教传承</h4>
+        <p>参与白祠寮重修、竹园下余氏宗祠维护、家风讲堂等宗族文化建设，让耕读家风代代相传。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <h3>一本好书，一个未来</h3>
+    <p>无论金额大小，您的每一笔捐赠，都将变成余氏子弟书桌前的一盏灯。期待宗亲乡贤共襄善举。</p>
+    <button class="btn-primary" onclick="go('donate')">参与捐赠</button>
+  </section>
+</div>
+
+<!-- ========== 视图：关于我们 ========== -->
+<div class="view" id="view-about">
+  <div class="page-hero">
+    <h1>关于基金会</h1>
+    <p>崇文重教 · 反哺桑梓 · 光前裕后</p>
+  </div>
+  <div class="page-body">
+    <p class="lead">上莒溪余氏教育发展基金会，由福建连城莒溪上莒溪余氏宗亲自发成立，以"奖教助学、培育后昆"为宗旨，会址设于余氏宗祠新安堂。</p>
+
+    <h2>缘起</h2>
+    <p>莒溪地处福建连城冠豸山西麓，客家山水毓秀，余氏一族在此耕读传家。进入新时代，众多余氏子弟走出大山、考上大学，乃至于博士、硕士，成为社会栋梁。为鼓励更多余氏子弟勤学上进，也为回馈家乡教育，宗亲乡贤们共同发起设立本基金会。</p>
+    <p>自2019年举办第一届颁奖大会以来，每年农历初秋，宗亲们都会齐聚新安堂耀采厅，举行庄重的奖学颁奖典礼——学子先到新安堂上香敬祖、沐浴祖德，再由理事会长辈颁发奖学金，传承余氏好家风。</p>
+
+    <h2>宗旨与理念</h2>
+    <p><strong>奖教助学</strong>：奖励优秀学生，礼敬优秀教师，让读书在余氏宗族成为最受尊重的事。</p>
+    <p><strong>反哺桑梓</strong>：动员旅外乡贤、企业家反哺家乡，凝聚宗族之力支持教育。</p>
+    <p><strong>耕读传家</strong>：以新安堂为精神纽带，把"读书修为、诚信宽容、乐善好义"的家风代代传下去。</p>
+
+    <h2>理事会</h2>
+    <div class="todo-note">以下理事会成员名单为占位结构，请基金会秘书处核实后替换为真实姓名与职务。</div>
+    <table class="board-table">
+      <tr><th>名誉会长</th><td>（待补充）</td></tr>
+      <tr><th>会长</th><td>余小伙</td></tr>
+      <tr><th>副会长</th><td>（待补充）</td></tr>
+      <tr><th>秘书长</th><td>（待补充）</td></tr>
+      <tr><th>理事</th><td>（待补充，按房系/村落分列）</td></tr>
+      <tr><th>监事</th><td>（待补充）</td></tr>
+    </table>
+
+    <h2>会址</h2>
+    <p>福建省龙岩市连城县莒溪镇 · 余氏宗祠新安堂（耀采厅）</p>
+  </div>
+</div>
+
+<!-- ========== 视图：奖助学项目 ========== -->
+<div class="view" id="view-programs">
+  <div class="page-hero">
+    <h1>奖助学项目</h1>
+    <p>每一笔奖学金，都是宗族对后辈的期许</p>
+  </div>
+  <div class="page-body">
+    <div class="todo-note">以下奖项名称与金额为参考结构，具体以基金会年度颁奖公告为准。</div>
+
+    <h2>奖励类别</h2>
+    <div class="proj-grid" style="margin-top:20px">
+      <div class="proj-card">
+        <h4>博士研究生奖</h4>
+        <p>奖励当年考取或在读博士研究生的余氏学子，彰显宗族崇文重教之最高荣誉。</p>
+      </div>
+      <div class="proj-card">
+        <h4>硕士研究生奖</h4>
+        <p>奖励当年考取硕士研究生的余氏学子，勉励精进学业。</p>
+      </div>
+      <div class="proj-card">
+        <h4>高考优秀奖</h4>
+        <p>奖励当年考入本科一批/重点高校的余氏高中毕业生。</p>
+      </div>
+      <div class="proj-card">
+        <h4>中考优秀奖</h4>
+        <p>奖励当年以优异成绩考入重点高中的余氏初中毕业生。</p>
+      </div>
+      <div class="proj-card">
+        <h4>优秀教师奖教金</h4>
+        <p>奖励扎根莒溪、教导余氏子弟成效突出的家乡教师。</p>
+      </div>
+      <div class="proj-card">
+        <h4>助学扶助金</h4>
+        <p>对家庭经济困难的余氏学子给予临时扶助，确保不因贫辍学。</p>
+      </div>
+    </div>
+
+    <h2>颁奖流程</h2>
+    <p>每年八月，基金会发布当年度奖学公告 → 符合条件的余氏子弟向所在房系理事申报 → 理事会审核公示 → 八月中下旬在新安堂耀采厅举行颁奖典礼 → 学子上香敬祖、长辈颁奖、学子代表发言、合影留念。</p>
+
+    <h2>申报须知</h2>
+    <p>1. 申报人须为上莒溪余氏宗亲后裔，家世清楚、谱系可考。</p>
+    <p>2. 须提供当年录取通知书、成绩单或学校证明等材料。</p>
+    <p>3. 申报时间一般为每年7月—8月初，具体以当年度公告为准。</p>
+    <p>4. 申报联系人：（待补充）</p>
+  </div>
+</div>
+
+<!-- ========== 视图：新闻动态 ========== -->
+<div class="view" id="view-news">
+  <div class="page-hero">
+    <h1>新闻动态</h1>
+    <p>八届颁奖盛典，一路薪火相传</p>
+  </div>
+  <div class="page-body">
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-year">2026<small>8月16日</small></div>
+        <div class="news-line"><div class="news-dot"></div></div>
+        <div class="news-body">
+          <h4>新安启志 历岁新高——第八届奖学金颁奖大会</h4>
+          <p>金秋送爽，丹桂飘香。8月16日上午，第八届（2026年）奖学金颁奖典礼在新安堂耀采厅隆重举行。</p>
+          <span class="news-tag">年度盛典</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2025<small>8月17日</small></div>
+        <div class="news-line"><div class="news-dot"></div></div>
+        <div class="news-body">
+          <h4>风从新安堂起——第七届奖学金颁奖大会</h4>
+          <p>八月秋风从新安堂吹来，带着桂花香沁人心脾。8月17日上午，第七届颁奖大会如期举行。</p>
+          <span class="news-tag">年度盛典</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2024<small>8月11日</small></div>
+        <div class="news-line"><div class="news-dot"></div></div>
+        <div class="news-body">
+          <h4>文登武进启新程——第六届奖学金颁奖大会</h4>
+          <p>学子们先到新安堂上香敬祖，沐浴祖德，传承余氏好家风。8月11日上午，第六届颁奖大会举行。</p>
+          <span class="news-tag">年度盛典</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2023<small>8月20日</small></div>
+        <div class="news-line"><div class="news-dot"></div></div>
+        <div class="news-body">
+          <h4>初心如磐 顺势而为——第五届颁奖典礼暨换届选举大会</h4>
+          <p>8月20日上午，第五届颁奖典礼暨换届选举大会召开，顺利完成理事会换届，余小伙先生继任会长。</p>
+          <span class="news-tag">换届选举</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2023<small>11月</small></div>
+        <div class="news-line"><div class="news-dot"></div></div>
+        <div class="news-body">
+          <h4>竹园下余氏宗祠落成庆典</h4>
+          <p>冠豸山下，竹园下余氏宗祠前彩旗飘扬、锣鼓喧天，宗祠落成庆典隆重举行。</p>
+          <span class="news-tag">宗族大事</span>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-year">2025<small>中秋</small></div>
+        <div class="news-line"><div class="news-dot"></div></div>
+        <div class="news-body">
+          <h4>白祠寮重修告竣</h4>
+          <p>岁在乙巳，时维中秋，白祠寮重修告竣，族人齐聚，祭祖上碑，共襄盛举。</p>
+          <span class="news-tag">宗族建设</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 视图：捐赠参与 ========== -->
+<div class="view" id="view-donate">
+  <div class="page-hero">
+    <h1>捐赠参与</h1>
+    <p>一本好书，一个未来；一份善心，一脉书香</p>
+  </div>
+  <div class="page-body">
+    <p class="lead">基金会常年接受余氏宗亲、乡贤企业家及社会各界爱心人士的捐赠。所有善款专款专用于奖教奖学与宗族文教事业，年度收支向全体宗亲公开。</p>
+
+    <div class="todo-note">以下银行账户、收款方式为占位示例，请基金会秘书处核实后替换为真实对公账户或指定收款账户。</div>
+
+    <div class="donate-grid">
+      <div class="donate-card">
+        <h4>银行转账</h4>
+        <div class="info-row"><span>开户名称</span><span>上莒溪余氏教育发展基金会（筹）</span></div>
+        <div class="info-row"><span>开户银行</span><span>（待补充）</span></div>
+        <div class="info-row"><span>银行账号</span><span>（待补充）</span></div>
+        <div class="info-row"><span>转账备注</span><span>姓名+教育基金</span></div>
+      </div>
+      <div class="donate-card">
+        <h4>其他方式</h4>
+        <div class="info-row"><span>微信/支付宝</span><span>（待补充收款码）</span></div>
+        <div class="info-row"><span>现场捐赠</span><span>新安堂理事会办公室</span></div>
+        <div class="info-row"><span>联系人</span><span>（待补充）</span></div>
+        <div class="info-row"><span>联系电话</span><span>（待补充）</span></div>
+      </div>
+    </div>
+
+    <h2>鸣谢方式</h2>
+    <p>所有捐赠者名录将在年度颁奖大会上公布，并镌刻于新安堂功德墙（如金额达立碑标准）。捐赠不分多少，善举皆留芳名。</p>
+  </div>
+</div>
+
+<!-- ========== 视图：联系我们 ========== -->
+<div class="view" id="view-contact">
+  <div class="page-hero">
+    <h1>联系我们</h1>
+    <p>欢迎宗亲回家，欢迎贤达来访</p>
+  </div>
+  <div class="page-body">
+    <div class="todo-note">以下联系方式为占位结构，请替换为真实信息。</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h5>会址</h5><p>福建省龙岩市连城县莒溪镇 余氏宗祠·新安堂</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><h5>电话</h5><p>（待补充）</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><h5>邮箱</h5><p>（待补充）</p></div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><h5>开放时间</h5><p>宗祠日常开放；理事会接待日为每月农历初一、十五</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-seal" style="width:44px;height:44px;font-size:22px">余</div>
+      <p>上莒溪余氏教育发展基金会<br>会址：福建省连城县莒溪镇新安堂<br>崇文重教 · 反哺桑梓</p>
+    </div>
+    <div>
+      <h5>快速导航</h5>
+      <ul>
+        <li onclick="go('about')">关于我们</li>
+        <li onclick="go('programs')">奖助学项目</li>
+        <li onclick="go('news')">新闻动态</li>
+        <li onclick="go('donate')">捐赠参与</li>
+      </ul>
+    </div>
+    <div>
+      <h5>联系</h5>
+      <ul>
+        <li onclick="go('contact')">联系方式</li>
+        <li onclick="toast('微信公众号待开通')">微信公众号</li>
+        <li onclick="toast('美篇专栏：余承燕')">美篇专栏</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 上莒溪余氏教育发展基金会 · 本站为宗亲公益展示页面，内容由理事会维护
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function go(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.view===view));
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+document.querySelectorAll('.nav-link').forEach(a=>{
+  a.addEventListener('click',()=>go(a.dataset.view));
+});
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+</script>
+</body>
+</html>
